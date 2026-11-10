@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>PsiConnect🧠 — Gestão humanizada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+
+  <main id="loginView" class="login-wrap">
+    <section class="login-art">
+      <div class="art-brand">
+        <span class="brand-icon">🧠</span> PsiConnect
+      </div>
+      <div class="art-copy">
+        <span class="eyebrow light"></span>
+        <h1>Mais presença<br>em cada encontro.</h1>
+        <p>Uma rotina mais leve começa com uma gestão que te acompanha.</p>
+      </div>
+      <div class="art-footer">Feito para você se sentir melhor!</div>
+      <div class="art-orbit orbit-one"></div>
+      <div class="art-orbit orbit-two"></div>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <div class="mobile-brand">
+          <span class="brand-icon">🧠</span> PsiConnect
+        </div>
+        <span class="eyebrow">BEM-VINDA(O) DE VOLTA</span>
+        <h2>Entre na sua conta</h2>
+        <p class="muted"></p>
+
+        <form id="loginForm" class="form-stack">
+          <label>E-mail
+            <input id="email" type="email" placeholder="voce@exemplo.com" autocomplete="username" required>
+          </label>
+          <label>Senha
+            <div class="password-field">
+              <input id="password" type="password" placeholder="Sua senha" autocomplete="current-password" required>
+              <button id="togglePassword" class="eye" type="button" aria-label="Mostrar senha">◉</button>
+            </div>
+          </label>
+          <button class="button primary full" type="submit">Entrar <span>→</span></button>
+        </form>
+
+        <div id="loginError" class="form-error" aria-live="polite"></div>
+      </div>
+      <footer class="login-privacy">🔒 Seus dados são protegidos e acessados por perfil.</footer>
+    </section>
+  </main>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <h2 class="brand" href="#">
+        <span class="brand-icon">🧠</span>
+        <span>PsiConnect</span>
+      </h2>
+
+  
+
+      <span class="nav-label">MENU PRINCIPAL</span>
+      <nav id="nav">
+        <button class="nav-item active" data-page="overview"><span>👁️</span> Visão geral</button>
+        <button class="nav-item" data-page="patients"><span>👥</span> Pacientes <i id="patientCount">0</i></button>
+        <button class="nav-item" data-page="appointments"><span>📅</span> Agenda</button>
+        <button class="nav-item admin-only" data-page="team"><span>🧑‍⚕️</span> Profissionais</button>
+        <button class="nav-item psychologist-only active" data-page="profile"><span>👤</span>Meu perfil</button>
+        <button class="nav-item admin-only" data-page="audit"><span>📊</span> Registro de atividades</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <span></span>
+          <strong>Um espaço mais leve<br>para cuidar melhor.</strong>
+          <small>Organização e presença,<br>lado a lado.</small>
+        </div>
+        <button id="logout" class="logout"><span>⇥</span> Sair da conta</button>
+      </div>
+    </aside>
+
+    <section class="main-column">
+      <header class="topbar">
+        <div class="crumb">
+          Espaço de trabalho <span>/</span> <strong id="pageCrumb">Visão geral</strong>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Notificações"><b></b></button>
+          <div class="top-divider"></div>
+          <div class="profile-chip">
+            <div class="avatar" id="avatar">MC</div>
+            <div>
+              <strong id="userName">Marina Costa</strong>
+              <small id="userRole">Administradora</small>
+            </div>
+            <span class="chevrons"></span>
+          </div>
+        </div>
+      </header>
+
+      <main id="page" class="page-content"></main>
+    </section>
+  </div>
+
+  <dialog id="modal">
+    <form id="modalForm" method="dialog">
+      <div class="modal-head">
+        <div>
+          <span id="modalEyebrow" class="eyebrow">NOVO CADASTRO</span>
+          <h2 id="modalTitle">Adicionar</h2>
+        </div>
+        <button type="button" id="closeModal" class="close-modal" aria-label="Fechar">×</button>
+      </div>
+
+      <div id="modalFields" class="form-grid"></div>
+
+      <div class="modal-actions">
+        <button class="button quiet" value="cancel">Cancelar</button>
+        <button id="modalSave" class="button primary" value="default">Salvar cadastro <span>→</span></button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
