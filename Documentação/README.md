@@ -1,7 +1,7 @@
 # PsiConnect
 ## Sistema de gestão para atendimento psicológico
 
-Projeto acadêmico desenvolvido para a disciplina de Desenvolvimento de Sistemas, utilizando TypeScript, Node.js e MySQL.
+Projeto acadêmico desenvolvido para a disciplina de Desenvolvimento Dinâmico, utilizando TypeScript, Node.js e MySQL.
 
 ## 1. Sobre o projeto
 
@@ -242,7 +242,7 @@ Os materiais complementares devem ser disponibilizados junto ao projeto.
 **Projeto:** PsiConnect  
 **Curso:** Sistemas de Informação  
 **Instituição:** Centro Universitário Jorge Amado  
-**Disciplina:** Desenvolvimento de Sistemas
+**Disciplina:** Desenvolvimento Dinâmico
 
 ---
 
