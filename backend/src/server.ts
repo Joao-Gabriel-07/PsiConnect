@@ -60,7 +60,9 @@ app.get("/api/health", async (_req, res) => {
             banco: "conectado",
             mensagem: "API e banco funcionando!"
         });
-    } catch {
+        } catch (erro) {
+        console.error("ERRO NO TESTE DO BANCO:", erro);
+
         res.status(500).json({
             status: "erro",
             mensagem: "Não foi possível acessar o banco de dados."
@@ -84,4 +86,8 @@ async function iniciarServidor() {
     }
 }
 
-iniciarServidor();
+export default app;
+
+if (!process.env.VERCEL) {
+    iniciarServidor();
+}
