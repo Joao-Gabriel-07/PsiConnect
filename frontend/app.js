@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = "https://psi-connect-ten.vercel.app/api";
 
 const state = {
   token: localStorage.getItem('psiconnect.token'),
