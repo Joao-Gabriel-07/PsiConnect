@@ -17,8 +17,21 @@ dotenv.config();
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
 
+const origensPermitidas = [
+    process.env.FRONTEND_ORIGIN,
+    "https://psiconnect-frontend-chi.vercel.app",
+    "http://127.0.0.1:5500",
+    "http://localhost:5500"
+].filter((origem): origem is string => Boolean(origem));
+
 app.use(cors({
-    origin: process.env.FRONTEND_ORIGIN || "http://127.0.0.1:5500"
+    origin: (origin, callback) => {
+        if (!origin || origensPermitidas.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Origem não autorizada pelo CORS"));
+        }
+    }
 }));
 
 app.use(express.json());
