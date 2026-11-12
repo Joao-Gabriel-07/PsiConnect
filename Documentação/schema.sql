@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS agendamentos (
     FOREIGN KEY (psicologo_id) REFERENCES psicologos (id),
   CONSTRAINT fk_agendamentos_paciente
     FOREIGN KEY (cliente_paciente_id) REFERENCES clientes_pacientes (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS logs_acoes (
   id INT NOT NULL AUTO_INCREMENT,
@@ -118,18 +118,22 @@ ON DUPLICATE KEY UPDATE
 
 INSERT INTO clientes_pacientes
   (id, nome, contato, data_nascimento, situacao, dados_adicionais) VALUES
-  (1, 'Paciente Demonstração 01', NULL, NULL, 'ativo', 'Registro ficticio para demonstracao academica.'),
-  (2, 'Paciente Demonstração 02', NULL, NULL, 'ativo', 'Registro ficticio para demonstracao academica.'),
-  (3, 'Paciente Demonstração 03', NULL, NULL, 'ativo', 'Registro ficticio para demonstracao academica.')
+  (1, 'Joao Gabriel da Silva Batista', 'lulax.rip@gmail.com', '2007-03-18', 'ativo', NULL),
+  (2, 'Filipe Araujo', 'filipearaujo 1908@gmail.com', '2006-08-19', 'ativo', NULL),
+  (3, 'Raul Bastos Magalhaes', 'magalhaesraul02@gmail.com', '2007-03-24', 'ativo', NULL),
+  (30004, 'Levi Sao Pedro Silva', 'lv 15spsilva@gmail.com', '2007-04-26', 'ativo', NULL)
 ON DUPLICATE KEY UPDATE
   nome = VALUES(nome),
+  contato = VALUES(contato),
+  data_nascimento = VALUES(data_nascimento),
   situacao = VALUES(situacao),
   dados_adicionais = VALUES(dados_adicionais);
 
 INSERT INTO vinculos (id, psicologo_id, cliente_paciente_id) VALUES
   (1, 1, 1),
   (2, 2, 2),
-  (3, 3, 3)
+  (3, 3, 3),
+  (30004, 2, 30004)
 ON DUPLICATE KEY UPDATE
   psicologo_id = VALUES(psicologo_id),
   cliente_paciente_id = VALUES(cliente_paciente_id);
@@ -137,11 +141,11 @@ ON DUPLICATE KEY UPDATE
 INSERT INTO agendamentos
   (id, psicologo_id, cliente_paciente_id, data_hora_consulta, status_confirmacao) VALUES
   (1, 1, 1, '2026-11-10 09:00:00', 'confirmado'),
-  (2, 2, 2, '2026-11-10 10:30:00', 'pendente'),
-  (3, 3, 3, '2026-11-11 14:00:00', 'confirmado')
+  (2, 2, 2, '2026-11-10 10:30:00', 'confirmado'),
+  (3, 3, 3, '2026-11-11 14:00:00', 'confirmado'),
+  (30004, 2, 30004, '2026-11-11 19:00:00', 'confirmado')
 ON DUPLICATE KEY UPDATE
+  psicologo_id = VALUES(psicologo_id),
+  cliente_paciente_id = VALUES(cliente_paciente_id),
   data_hora_consulta = VALUES(data_hora_consulta),
   status_confirmacao = VALUES(status_confirmacao);
-
-
-
